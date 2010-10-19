@@ -54,6 +54,7 @@ cmap w!! %!sudo tee > /dev/null %
 " This turns off Vim’s crazy default regex characters and makes searches use
 " normal regexes.
 nnoremap / /\v
+
 vnoremap / /\v
 
 "work together to highlight search results (as you type). It’s really quite
@@ -207,4 +208,9 @@ if executable("jslint")
         nnoremap <left> <nop>
         nnoremap <right> <nop>
         inoremap <up> <nop>
+
+" Backups & Files
+set backup                     " Enable creation of backup file.
+set backupdir=~/.vim/backups " Where backups will go.
+set directory=~/.vim/tmp     " Where temporary files will go.
 
