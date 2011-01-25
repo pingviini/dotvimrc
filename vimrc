@@ -82,135 +82,135 @@ nmap Q gqap
 
 if executable("jslint")
     autocmd BufWritePost *.js :!jslint %
-    endif
+endif
 
-    " Format with par if we have it.
-    if executable("par")
-        set formatprg=par\ -w80
-        endif
+" Format with par if we have it.
+if executable("par")
+    set formatprg=par\ -w80
+endif
 
-        " Execute file being edited
-        map <F5> :! %:p <CR>
+" Execute file being edited
+map <F5> :! %:p <CR>
 
-        " Some aliases
-        command W w
-        command Q q
-        command WQ wq
-        command Wq wq
+" Some aliases
+command W w
+command Q q
+command WQ wq
+command Wq wq
 
-        " :MM to save and make
-        command MM w|make
-
-
-        " Cooler tab completion for vim commands
-        " http://stackoverflow.com/questions/526858/how-do-i-make-vim-do-normal-bash-like-tab-completion-for-file-names
-        set wildmode=longest,list
+" :MM to save and make
+command MM w|make
 
 
-        " Folding
-        "set foldmethod=indent     
-        "set foldlevel=9999        " initially open all folds
-        "command FoldAll set foldlevel=0
-        "command FoldOne set foldlevel=1
+" Cooler tab completion for vim commands
+" http://stackoverflow.com/questions/526858/how-do-i-make-vim-do-normal-bash-like-tab-completion-for-file-names
+set wildmode=longest,list
 
 
-        set statusline=%<%f\ \ %h%m%r%=%-14.(%l/%L,%c%V%)\ %P
-
-        set laststatus=2 " Show statusline always
-
-
-        " python stuff
-        autocmd BufRead,BufNewFile *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-        autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
-        let python_highlight_all = 1
-
-        " php
-        autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+" Folding
+"set foldmethod=indent     
+"set foldlevel=9999        " initially open all folds
+"command FoldAll set foldlevel=0
+"command FoldOne set foldlevel=1
 
 
+set statusline=%<%f\ \ %h%m%r%=%-14.(%l/%L,%c%V%)\ %P
 
-        " Hilight long lines
-        autocmd BufRead *.md,*.txt,*.py,*.cgi :let w:m1=matchadd('Search', '\%<81v.\%>77v', -1)
-        autocmd BufRead *.md,*.txt,*.py,*.cgi :let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-
+set laststatus=2 " Show statusline always
 
 
+" python stuff
+autocmd BufRead,BufNewFile *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
 
-        " Plugins
-        filetype plugin on
+" Run pyflakes in every save
+autocmd BufWritePost *.py call Pyflakes()
+let python_highlight_all = 1
+
+" php
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
+" zope page templates
+" autocmd BufRead,BufNewFile *.pt set smartindent
 
 
-        " Clojure 
-        let g:clj_highlight_builtins=1      " Highlight Clojure's builtins
-        let g:clj_paren_rainbow=1           " Rainbow parentheses'!
+" Hilight long lines
+autocmd BufRead *.md,*.txt,*.py,*.cgi :let w:m1=matchadd('Search', '\%<81v.\%>77v', -1)
+autocmd BufRead *.md,*.txt,*.py,*.cgi :let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 
 
 
 
-
-        "" Leader mappings
-        let mapleader = ","
-        let maplocalleader = ";"
-
-        " strip all trailing whitespace in the current file
-        nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-
-        "" reStructured Text Stuff
-        " Set heading
-        nnoremap <leader>rt yypVr
+" Plugins
+filetype plugin on
 
 
-        "  to reselect the text that was just pasted so I can perform commands (like
-        "  indentation) on it
-        nnoremap <leader>v V`]
-
-        "" Window management
-        " new vertical split
-        nnoremap <leader>w :vertical sp<CR>
-        " new horizontal split
-        nnoremap <leader>wh :sp<CR>
-
-        " Easily move between split windows using <leader>hjkl
-        nnoremap <leader>h <C-w>h
-        nnoremap <leader>j <C-w>j
-        nnoremap <leader>k <C-w>k
-        nnoremap <leader>l <C-w>l
-
-        " Easily resize split windows with Ctrl+hjkl
-        nnoremap <C-j> <C-w>+
-        nnoremap <C-k> <C-w>-
-        nnoremap <C-h> <C-w><
-        nnoremap <C-l> <C-w>>
+" Clojure 
+let g:clj_highlight_builtins=1      " Highlight Clojure's builtins
+let g:clj_paren_rainbow=1           " Rainbow parentheses'!
 
 
+"" Leader mappings
+let mapleader = ","
+let maplocalleader = ";"
+
+" strip all trailing whitespace in the current file
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+
+"" reStructured Text Stuff
+" Set heading
+nnoremap <leader>rt yypVr
+
+"  to reselect the text that was just pasted so I can perform commands (like
+"  indentation) on it
+nnoremap <leader>v V`]
+
+"" Window management
+
+" new vertical split
+nnoremap <leader>w :vertical sp<CR>
+" new horizontal split
+nnoremap <leader>wh :sp<CR>
+
+" Easily move between split windows using <leader>hjkl
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
+
+" Easily resize split windows with Ctrl+hjkl
+nnoremap <C-j> <C-w>+
+nnoremap <C-k> <C-w>-
+nnoremap <C-h> <C-w><
+nnoremap <C-l> <C-w>>
 
 
-        " Buffer manipulator
-        nmap <Leader>, :LustyJuggler<CR>
-        nmap <Leader>fb :FufBuffer<CR>
-        " open new buffers from the directory where current file is in
-        nmap <Leader>ff :FufFileWithCurrentBufferDir<CR>
+" Buffer manipulator
+nmap <Leader>, :LustyJuggler<CR>
+nmap <Leader>fb :FufBuffer<CR>
+" open new buffers from the directory where current file is in
+nmap <Leader>ff :FufFileWithCurrentBufferDir<CR>
 
-        " Move by screen lines instead of file line. Nice with long lines.
-        nnoremap j gj
-        nnoremap k gk
+" Move by screen lines instead of file line. Nice with long lines.
+nnoremap j gj
+nnoremap k gk
 
 
-        " Ack 
-        " http://betterthangrep.com/
-        let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-        nnoremap <leader>a :Ack
+" Ack 
+" http://betterthangrep.com/
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+nnoremap <leader>a :Ack
 
-        " Learn mode!
-        " Disables arrow keys even in insert mode!
-        nnoremap <up> <nop>
-        nnoremap <down> <nop>
-        nnoremap <left> <nop>
-        nnoremap <right> <nop>
-        inoremap <up> <nop>
+" Learn mode!
+" Disables arrow keys even in insert mode!
+"        nnoremap <up> <nop>
+"        nnoremap <down> <nop>
+"        nnoremap <left> <nop>
+"        nnoremap <right> <nop>
+"        inoremap <up> <nop>
 
 " Backups & Files
-set backup                     " Enable creation of backup file.
+set backup                   " Enable creation of backup file.
 set backupdir=~/.vim/backups " Where backups will go.
 set directory=~/.vim/tmp     " Where temporary files will go.
 

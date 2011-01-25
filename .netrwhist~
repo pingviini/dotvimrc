@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/space/jutaojan/Programming/workspace-helios/buildouts/m3jyu/src/jyu.shiblogin'
+let g:netrw_dirhist_2='/space/jutaojan/Programming/workspace-helios/buildouts/m3jyu/src/jyu.m3.media'
+let g:netrw_dirhist_3='/space/jutaojan/Programming/workspace-helios/buildouts/m3jyu/src/jyu.m3.media/jyu/m3/media'
+let g:netrw_dirhist_4='/space/jutaojan/Programming/workspace-helios/jyu.shiblogin'
+let g:netrw_dirhist_5='/space/jutaojan/Programming/buildouts/kirjasto/trunk/src/jyu.policy.base'
+let g:netrw_dirhist_6='/space/jutaojan/Programming/workspace/policies/jyu.policy.base'
