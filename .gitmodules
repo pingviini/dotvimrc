@@ -13,12 +13,9 @@
 [submodule "bundle/pep8"]
     path = bundle/pep8
     url = http://github.com/jbernard/vim-pep8.git
-[submodule "Command-T"]
-    path = Command-T
-    url = https://github.com/wincent/Command-T.git
 [submodule "bundle/Command-T"]
     path = bundle/Command-T
     url = https://github.com/wincent/Command-T.git
 [submodule "bundle/vcscommand"]
 	path = bundle/vcscommand
-	url = git://repo.or.cz/vcscommand
+	url = https://github.com/vim-scripts/vcscommand.vim.git
