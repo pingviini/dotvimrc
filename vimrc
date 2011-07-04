@@ -210,8 +210,8 @@ nnoremap <leader>a :Ack
 "        inoremap <up> <nop>
 
 " Backups & Files
-set backup                   " Enable creation of backup file.
-set backupdir=~/.vim/backups " Where backups will go.
-set directory=~/.vim/tmp     " Where temporary files will go.
+" set backup                   " Enable creation of backup file.
+" set backupdir=~/.vim/backups " Where backups will go.
+" set directory=~/.vim/tmp     " Where temporary files will go.
 
 let g:pydict_location = '~/.vim/after/ftplugin/pydiction/complete-dict'
