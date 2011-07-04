@@ -19,6 +19,3 @@
 [submodule "bundle/rails"]
 	path = bundle/rails
 	url = git://github.com/tpope/vim-rails.git
-[submodule "bundle/pep8"]
-	path = bundle/pep8
-	url = git://github.com/jcrocholl/pep8.git
