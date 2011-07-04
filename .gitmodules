@@ -10,12 +10,9 @@
 [submodule "bundle/pyflakes"]
     path = bundle/pyflakes
     url = http://github.com/nvie/vim-pyflakes.git
-[submodule "bundle/Command-T"]
-    path = bundle/Command-T
-    url = https://github.com/wincent/Command-T.git
 [submodule "bundle/rails"]
-	path = bundle/rails
-	url = git://github.com/tpope/vim-rails.git
+    path = bundle/rails
+    url = git://github.com/tpope/vim-rails.git
 [submodule "bundle/pep8"]
-	path = bundle/pep8
-	url = git://github.com/nvie/vim-pep8.git
+    path = bundle/pep8
+    url = git://github.com/nvie/vim-pep8.git
