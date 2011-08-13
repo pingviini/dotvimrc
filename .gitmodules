@@ -55,3 +55,6 @@
 [submodule "bundle/bclose"]
 	path = bundle/bclose
 	url = https://github.com/rbgrouleff/bclose.vim.git
+[submodule "bundle/command-t"]
+	path = bundle/command-t
+	url = https://github.com/wincent/Command-T.git
