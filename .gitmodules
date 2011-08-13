@@ -1,9 +1,6 @@
 [submodule "bundle/fugitive"]
     path = bundle/fugitive
     url = http://github.com/tpope/vim-fugitive.git
-[submodule "bundle/snipmate"]
-    path = bundle/snipmate
-    url = git://github.com/msanders/snipmate.vim.git
 [submodule "bundle/nerdtree"]
     path = bundle/nerdtree
     url = http://github.com/scrooloose/nerdtree.git
@@ -17,5 +14,50 @@
     path = bundle/pep8
     url = git://github.com/nvie/vim-pep8.git
 [submodule "bundle/command-t"]
-	path = bundle/command-t
-	url = git://git.wincent.com/command-t.git
+    path = bundle/command-t
+    url = git://git.wincent.com/command-t.git
+[submodule "bundle/Command-T"]
+    path = bundle/Command-T
+    url = git://git.wincent.com/command-t.git
+[submodule "bundle/vcscommand"]
+    path = bundle/vcscommand
+    url = https://github.com/vim-scripts/vcscommand.vim.git
+[submodule "bundle/snipmate"]
+    path = bundle/snipmate
+    url = git://github.com/msanders/snipmate.vim.git
+[submodule "bundle/vcsnursery"]
+    path = bundle/vcsnursery
+    url = git://github.com/vim-scripts/vcsnursery.git
+[submodule "bundle/unimpaired"]
+	path = bundle/unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
+[submodule "bundle/markdown"]
+	path = bundle/markdown
+	url = https://github.com/tpope/vim-markdown.git
+[submodule "bundle/lustyexplorer"]
+	path = bundle/lustyexplorer
+	url = https://github.com/vim-scripts/LustyExplorer.git
+[submodule "bundle/solarized"]
+	path = bundle/solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "bundle/pyref"]
+	path = bundle/pyref
+	url = https://github.com/xolox/vim-pyref.git
+[submodule "bundle/easygrep"]
+	path = bundle/easygrep
+	url = https://github.com/gaving/vim-easygrep.git
+[submodule "bundle/gundo"]
+	path = bundle/gundo
+	url = https://github.com/sjl/gundo.vim.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "bundle/bufexplorer"]
+	path = bundle/bufexplorer
+	url = https://github.com/vim-scripts/bufexplorer.zip.git
+[submodule "bundle/indent-guides"]
+	path = bundle/indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides.git
+[submodule "bundle/bclose"]
+	path = bundle/bclose
+	url = https://github.com/rbgrouleff/bclose.vim.git
