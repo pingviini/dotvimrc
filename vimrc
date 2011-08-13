@@ -1,4 +1,3 @@
-
 let g:pathogen_disabled = []
 
 " Disable command-t if it is broken
@@ -376,7 +375,7 @@ au VimEnter * unmap <Leader>bd
 " LustyExplorer
 au VimEnter * unmap <Leader>lf
 au VimEnter * unmap <Leader>lb
-au VimEnter * unmap <Leader>lj
+"au VimEnter * unmap <Leader>lj
 au VimEnter * unmap <Leader>lg
 au VimEnter * unmap <Leader>lr
 
@@ -388,7 +387,6 @@ let g:EasyGrepRecursive=1
 let g:EasyGrepIgnoreCase=1
 let g:EasyGrepCommand=1
 
-let coffee_pygmentize="/home/epeli/.virtualenvs/pygments/bin/pygmentize"
 
 " Show margin column
 set colorcolumn=80
