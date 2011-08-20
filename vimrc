@@ -391,6 +391,35 @@ let g:EasyGrepCommand=1
 " Show margin column
 set colorcolumn=80
 
+"""
+" Exuberant Ctags and Omelette
+
+" Find tags|omelette directory by going up from cwd
+py << EOF
+import os
+import sys
+import vim
+parts = os.getcwd().split("/")
+max = len(parts)
+for i in range(max):
+    i += 1
+    tags = "%s/tags" % "/".join(parts[:-i])
+    if os.path.isfile(tags):
+        vim.command(r"set tags=%s" % tags)
+        break
+for i in range(max):
+    i += 1
+    omelette = "%s/parts/omelette" % "/".join(parts[:-i])
+    if os.path.isdir(omelette):
+        if os.environ.get("PYTHONPATH"):
+            os.environ["PYTHONPATH"] += ":" + omelette
+        else:
+            os.environ["PYTHONPATH"] = omelette
+        sys.path.append(omelette)
+        vim.command(r"set path+=%s" % omelette)
+        break
+EOF
+
 
 " Find tags directory by going up from cwd
 py << EOF
@@ -425,4 +454,7 @@ nnoremap <leader>a :Ack
 " set backup                   " Enable creation of backup file.
 " set backupdir=~/.vim/backups " Where backups will go.
 " set directory=~/.vim/tmp     " Where temporary files will go.
+
+" Mr.Igor
+nmap <D-i> :!igor %<CR> <bar> :e!<CR>
 
