@@ -26,7 +26,7 @@ set modeline
 set wildignore=*.swp,*.bak,*.pyc,*.class,eggs,develop-eggs,*.egg-info,*~,node_modules
 
 set t_Co=256
-colorscheme solarized
+"#colorscheme solarized
 set background=dark
 
 syntax on
@@ -204,18 +204,11 @@ command SessionSave mksession .session.vim
 command SessionLoad source .session.vim
 
 
-" Cooler tab completion for vim commands
-" http://stackoverflow.com/questions/526858/how-do-i-make-vim-do-normal-bash-like-tab-completion-for-file-names
-set wildmode=longest,list
-
-
 " Folding
 "set foldmethod=indent
 set foldlevel=9999 " initially open all folds
 command FoldAll set foldlevel=0
 command FoldOne set foldlevel=1
-
-
 
 
 " python stuff
@@ -240,6 +233,7 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 " Run pyflakes in every save
 autocmd BufWritePost *.py call Pyflakes()
 let python_highlight_all = 1
+let g:pyflakes_use_quickfix = 0
 
 " Hilight long lines
 command LongLinesShow let w:m1=matchadd('Search', '\%<81v.\%>77v', -1) | let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
