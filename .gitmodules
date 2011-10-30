@@ -58,6 +58,9 @@
 [submodule "bundle/command-t"]
 	path = bundle/command-t
 	url = https://github.com/wincent/Command-T.git
-[submodule "snippets"]
-	path = snippets
-	url = http://github.com/zedr/zope-snipmate-bundle.git
+[submodule "bundle/coffee"]
+	path = bundle/coffee
+	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "bundle/scss"]
+	path = bundle/scss
+	url = https://github.com/cakebaker/scss-syntax.vim.git
