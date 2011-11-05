@@ -387,6 +387,7 @@ set colorcolumn=80
 
 """
 " Exuberant Ctags and Omelette
+nnoremap <leader>T g]
 
 " Find tags|omelette directory by going up from cwd
 py << EOF
@@ -414,22 +415,6 @@ for i in range(max):
         break
 EOF
 
-
-" Find tags directory by going up from cwd
-py << EOF
-import os
-import sys
-import vim
-parts = os.getcwd().split("/")
-max = len(parts)
-for i in range(max):
-    i += 1
-    tags = "%s/tags" % "/".join(parts[:-i])
-    if os.path.isfile(tags):
-        print "Found tags from", tags
-        vim.command(r"set tags=%s" % tags)
-        break
-EOF
 
 " Ack 
 " http://betterthangrep.com/
