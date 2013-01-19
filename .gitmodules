@@ -28,9 +28,6 @@
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = git://github.com/scrooloose/syntastic.git
-[submodule "bundle/bufexplorer"]
-	path = bundle/bufexplorer
-	url = git://github.com/vim-scripts/bufexplorer.zip.git
 [submodule "bundle/indent-guides"]
 	path = bundle/indent-guides
 	url = git://github.com/nathanaelkane/vim-indent-guides.git
@@ -70,3 +67,6 @@
 [submodule "bundle/better-css-syntax"]
 	path = bundle/better-css-syntax
 	url = git://github.com/vim-scripts/Better-CSS-Syntax-for-Vim.git
+[submodule "bundle/easygrep"]
+	path = bundle/easygrep
+	url = git://github.com/vim-scripts/EasyGrep.git
