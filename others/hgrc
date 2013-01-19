@@ -1,0 +1,15 @@
+[ui]
+username = Jukka Ojaniemi <jukka.ojaniemi@gmail.com>
+verbose = True
+
+[extensions]
+convert =
+color =
+graphlog =
+hgk =
+mercurial_keyring =
+
+[auth]
+acme.prefix = example.com/code
+acme.username = pingviini
+acme.schemes = http

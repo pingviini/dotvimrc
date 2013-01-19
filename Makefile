@@ -19,4 +19,7 @@ all: update install
 .PHONY friends:
 	ln -s .vim/others/tmux.conf ~/.tmux.conf || exit 0
 	ln -s .vim/others/gitconfig ~/.gitconfig || exit 0
-	echo "source ~/.vim/others/bashrc" >> ~/.bashrc
+	ln -s .vim/others/gitignores_global ~/.gitignores_global || exit 0
+	ln -s .vim/others/hgrc ~/.hgrc || exit 0
+	ln -s .vim/others/hgignore ~/.hgignore || exit 0
+	@echo "Set correct settings to .hgrc for mercurial-keyring"
