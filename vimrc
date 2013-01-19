@@ -1,48 +1,46 @@
 let g:pathogen_disabled = []
 
-" Disable command-t if it is broken
-if filereadable($HOME . '/.vim/bundle/command-t/disable')
-   call add(g:pathogen_disabled, 'command-t')
-else
-    " Search buffers with Command-T
-    nnoremap <Leader>, :CommandTBuffer<CR>
-
-    " Use separate working directory for Command-T instead of Vim's cwd. Use
-    " CommandTSetWorkingDirectory to reset the dir to cwd of Vim.
-    command CommandTSetWorkingDirectory let g:CommandTWorkingDirectory = getcwd()
-    CommandTSetWorkingDirectory " Set up initially
-
-    " remove easy :call EasyMotionT(0, 0)<CR>
-    au VimEnter * unmap <Leader>t
-    au VimEnter * map <Leader>t :exec "CommandT" . g:CommandTWorkingDirectory <CR>
-endif
-
 " Activate all plugins from the bundle
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+" call pathogen#runtime_append_all_bundles()
+" call pathogen#helptags()
+call pathogen#infect()
 
 set ai
 set modeline
 set wildignore=*.swp,*.bak,*.pyc,*.class,eggs,develop-eggs,*.egg-info,*~,node_modules
 
 set t_Co=256
-"#colorscheme solarized
 set background=dark
+let g:solarized_termtrans=1
+let g:solarized_termcolors=256
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
+colorscheme solarized
 
 syntax on
 filetype on
 filetype plugin on
 
+" Use smart indenting
+set smarttab expandtab autoindent
+
+" Pick file type based indenting
+filetype indent on
+
 " By default use four spaces as indentation
 set tabstop=4 shiftwidth=4 softtabstop=4
 
-" Use smart indenting
-set smarttab expandtab autoindent
 
 " Ruby uses 2 spaces as indentation
 au FileType ruby,haml,eruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
 " Also for xmly stuff
 au FileType html,xml,xhtml setlocal shiftwidth=2 tabstop=2 softtabstop=2
+" css, javascript
+au FileType css,js setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
+" CSS properties and classes often use dash in their names. Add it to word
+" match then.
+au FileType css,jade,stylus,less,scss,handlebars,html,coffee,eruby,javascript setlocal iskeyword+=-
 
 " Makefiles and gitconfig require tab
 au FileType make,gitconfig setlocal noexpandtab
@@ -54,12 +52,12 @@ let maplocalleader = ";"
 " set custom file types
 au BufNewFile,BufRead *.zcml setfiletype xml
 au BufNewFile,BufRead *.pt setfiletype xml
+au BufNewFile,BufRead *.cpt setfiletype xml
 au BufNewFile,BufRead *.coffee setfiletype coffee
 au BufNewFile,BufRead *.json setfiletype json
 au BufNewFile,BufRead *.ru setfiletype ruby
 au BufNewFile,BufRead *.conf setfiletype conf
-au BufNewFile,BufRead *.pde setfiletype arduino
-au BufNewFile,BufRead *.jade setfiletype jade
+au BufNewFile,BufRead *.cfg setfiletype conf
 
 " TODO: why does modula2 overrides this?
 au BufNewFile,BufRead *.md setfiletype markdown
@@ -71,6 +69,9 @@ au BufNewFile,BufRead *.markdown setfiletype markdown
 set statusline=%<%f%y\ %#warningmsg#%{SyntasticStatuslineFlag()}%*\ %h%m%r%=%-14.(%l/%L,%c%V%)\ %P
 
 let g:syntastic_enable_signs=1
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'active_filetypes': ['ruby', 'python', 'javascript', 'coffee', 'sass', 'css'],
+                           \ 'passive_filetypes': ['puppet'] }
 
 nnoremap <leader>e :Errors<CR>
 
@@ -95,6 +96,17 @@ set autowrite
 "Map escape key to jj -- much faster
 imap jj <esc>
 
+" Start window scrolling n lines before hitting the edge
+set scrolloff=3
+
+" Make Y behave like other capitals. Yank to end of line.
+map Y y$
+
+let g:yankring_history_dir = "$HOME/.vim"
+
+" Reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
 
 " Apply  substitutions globally on lines. For example, instead of
 " :%s/foo/bar/g you just type :%s/foo/bar/. This is almost always what you
@@ -112,6 +124,10 @@ nmap <C-Down> ]e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
+" Backups
+set backupdir=~/.vim/tmp/backup// " backups
+set directory=~/.vim/tmp/swap// " swap files
+set backup " enable backup
 
 " * Search & Replace
 " make searches case-insensitive, unless they contain upper-case letters:
@@ -121,6 +137,9 @@ set ignorecase smartcase
 set ssop-=options
 " do not store folds
 set ssop-=folds
+
+" Clear search hilights
+noremap å :noh<cr><esc>
 
 " When editing a file, always jump to the last cursor position
 autocmd BufReadPost *
@@ -165,6 +184,10 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.
 " Forces 80 character lines.
 vmap Q gq
 nmap Q gqap
+"
+" CSS properties and classes often use dash in their names. Add it to word
+" match then.
+au FileType css,jade,stylus,less,scss,handlebars,html,coffee,eruby,javascript setlocal iskeyword+=-
 
 
 if executable("jslint")
@@ -230,20 +253,13 @@ map <C-h> :py EvaluateCurrentRange()<CR>
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
 
-" Run pyflakes in every save
-autocmd BufWritePost *.py call Pyflakes()
-let python_highlight_all = 1
-let g:pyflakes_use_quickfix = 0
+" Run flake8 in every save
+autocmd BufWritePost *.py call Flake8()
 
 " Hilight long lines
-command LongLinesShow let w:m1=matchadd('Search', '\%<81v.\%>77v', -1) | let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+command LongLinesShow let w:m1=matchadd('Search', '\%<81v.\%>78v', -1) | let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 command LongLinesHide call matchdelete(w:m1) | call matchdelete(w:m2)
 autocmd BufRead,BufNewFile *.md,*.txt,*.py,*.cgi :LongLinesShow
-
-
-" Clojure 
-let g:clj_highlight_builtins=1      " Highlight Clojure's builtins
-let g:clj_paren_rainbow=1           " Rainbow parentheses'!
 
 
 " Makes Caps Lock work as Esc
@@ -260,8 +276,6 @@ nnoremap <leader>rt yypVr
 "  to reselect the text that was just pasted so I can perform commands (like
 "  indentation) on it
 nnoremap <leader>v V`]
-
-
 
 
 "" Window management
@@ -290,12 +304,6 @@ nnoremap <Leader>r :redraw!<CR>
 
 
 " Open file tree
-" nnoremap <Leader>n :NERDTreeToggle<CR>
-" Open bufexplorer
-" nnoremap <Leader>m :BufExplorer<CR>
-
-
-" Open file tree
 nnoremap <Leader>n :LustyFilesystemExplorer<CR>
 " Open bufexplorer
 nnoremap <Leader>m :LustyBufferExplorer <CR>
@@ -303,8 +311,6 @@ nnoremap <Leader>m :LustyBufferExplorer <CR>
 nnoremap <Leader>f :LustyFilesystemExplorerFromHere <CR>
 " Opens buffer grep
 nnoremap <Leader>g :LustyBufferGrep <CR>
-
-
 
 map <Leader>p :echo expand('%:p') <CR>
 
@@ -327,13 +333,13 @@ nnoremap <Leader>d jI" <C-c>hvk$xh " Down
 autocmd FileType gitcommit DiffGitCached | wincmd p
 
 
-" Command for reloading snipMate snippets
-command SnippetsReload call ReloadAllSnippets()
-command SnippetsEditSelect e ~/.vim/bundle/snipmate/snippets/
-" Open corresponding snipets file
-command SnippetsEdit execute "edit ~/.vim/bundle/snipmate/snippets/" . &ft . ".snippets"
-" Reload snippets after saving
-au BufWritePost *.snippets call ReloadAllSnippets()
+" " Command for reloading snipMate snippets
+" command SnippetsReload call ReloadAllSnippets()
+" command SnippetsEditSelect e ~/.vim/bundle/snipmate/snippets/
+" " Open corresponding snipets file
+" command SnippetsEdit execute "edit ~/.vim/bundle/snipmate/snippets/" . &ft . ".snippets"
+" " Reload snippets after saving
+" au BufWritePost *.snippets call ReloadAllSnippets()
 
 
 " for pyref
@@ -369,7 +375,7 @@ au VimEnter * unmap <Leader>bd
 " LustyExplorer
 au VimEnter * unmap <Leader>lf
 au VimEnter * unmap <Leader>lb
-"au VimEnter * unmap <Leader>lj
+" au VimEnter * unmap <Leader>lj
 au VimEnter * unmap <Leader>lg
 au VimEnter * unmap <Leader>lr
 
@@ -383,11 +389,14 @@ let g:EasyGrepCommand=1
 
 
 " Show margin column
-set colorcolumn=80
+if exists('+colorcolumn')
+    set colorcolumn=80
+endif
 
 """
 " Exuberant Ctags and Omelette
-nnoremap <leader>T g]
+map <Leader>t :CtrlP<CR>
+map <Leader>T :CtrlPClearAllCaches<CR>
 
 " Find tags|omelette directory by going up from cwd
 py << EOF
@@ -430,10 +439,60 @@ nnoremap <leader>a :Ack
 "        inoremap <up> <nop>
 
 " Backups & Files
-" set backup                   " Enable creation of backup file.
-" set backupdir=~/.vim/backups " Where backups will go.
-" set directory=~/.vim/tmp     " Where temporary files will go.
+set backup                   " Enable creation of backup file.
+set backupdir=~/.vim/backups " Where backups will go.
+set directory=~/.vim/tmp     " Where temporary files will go.
 
 " Mr.Igor
 nmap <D-i> :!igor %<CR> <bar> :e!<CR>
 
+" TagBar configuration
+let g:tagbar_usearrows = 1
+nnoremap <leader>ll :TagbarToggle<CR>
+
+" Gundo
+map <leader>G :GundoToggle<CR>
+
+" Tasklist
+map <leader>td <Plug>TaskList
+
+" Simple word refactoring shortcut. Hit <Leader>r<new word> on a word to
+" refactor it. Navigate to more matches with `n` and `N` and redo refactoring
+" by hitting the dot key.
+noremap <leader>r mp*Nciw
+
+" Easier curly braces insertion
+imap § {
+imap ½ }
+
+" Easily change directory to the file being edited.
+nmap <leader>cd :cd %:p:h<CR>
+" Easily change directory to the file being edited.
+" nmap <leader>cd :cd %:p:h<CR>
+
+" If we're running Vim 7.3 or newer, enable persistent undo and tell vim were
+" " to store the undo files.
+if version >= 703
+    set undofile
+    set undodir=~/.vim/undos
+endif
+
+" Block navigation
+map <leader>k [%
+map <leader>j ]%
+
+
+" Python
+""""""""
+autocmd BufRead,BufNewFile *.py set cinwords=if,elif,else,for,while,try,except,finally,def,class
+autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
+
+" UltiSnip
+""""""""""
+
+set runtimepath+=~/.vim/bundle/UltiSnips
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]

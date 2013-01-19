@@ -1,0 +1,5 @@
+[user]
+	name = Jukka Ojaniemi
+	email = jukka.ojaniemi@gmail.com
+[core]
+	excludesfile = $HOME/.gitignore_global

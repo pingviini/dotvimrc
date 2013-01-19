@@ -7,18 +7,6 @@
 [submodule "bundle/rails"]
     path = bundle/rails
     url = git://github.com/tpope/vim-rails.git
-[submodule "bundle/pep8"]
-    path = bundle/pep8
-    url = git://github.com/nvie/vim-pep8.git
-[submodule "bundle/vcscommand"]
-    path = bundle/vcscommand
-    url = https://github.com/vim-scripts/vcscommand.vim.git
-[submodule "bundle/snipmate"]
-    path = bundle/snipmate
-    url = git://github.com/msanders/snipmate.vim.git
-[submodule "bundle/vcsnursery"]
-    path = bundle/vcsnursery
-    url = git://github.com/vim-scripts/vcsnursery.git
 [submodule "bundle/unimpaired"]
 	path = bundle/unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
@@ -52,18 +40,36 @@
 [submodule "bundle/bclose"]
 	path = bundle/bclose
 	url = https://github.com/rbgrouleff/bclose.vim.git
-[submodule "bundle/command-t"]
-	path = bundle/command-t
-	url = https://github.com/wincent/Command-T.git
 [submodule "bundle/tcomment"]
 	path = bundle/tcomment
 	url = https://github.com/tomtom/tcomment_vim.git
-[submodule "bundle/coffee"]
-	path = bundle/coffee
-	url = https://github.com/kchmck/vim-coffee-script.git
 [submodule "bundle/scss"]
 	path = bundle/scss
 	url = https://github.com/cakebaker/scss-syntax.vim.git
-[submodule "bundle/pyflakes-vim"]
-	path = bundle/pyflakes-vim
-	url = https://github.com/kevinw/pyflakes-vim.git
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = git://github.com/majutsushi/tagbar.git
+[submodule "bundle/delmitmate"]
+	path = bundle/delmitmate
+	url = git://github.com/Raimondi/delimitMate.git
+[submodule "bundle/tasklist"]
+	path = bundle/tasklist
+	url = https://github.com/vim-scripts/TaskList.vim.git
+[submodule "bundle/jedi"]
+	path = bundle/jedi
+	url = git://github.com/davidhalter/jedi-vim.git
+[submodule "bundle/UltiSnips"]
+	path = bundle/UltiSnips
+	url = git://github.com/vim-scripts/UltiSnips.git
+[submodule "bundle/vim-coffee-script"]
+	path = bundle/vim-coffee-script
+	url = git://github.com/kchmck/vim-coffee-script.git
+[submodule "bundle/ctrlp"]
+	path = bundle/ctrlp
+	url = git://github.com/kien/ctrlp.vim.git
+[submodule "bundle/flake8"]
+	path = bundle/flake8
+	url = git://github.com/nvie/vim-flake8.git
+[submodule "bundle/better-css-syntax"]
+	path = bundle/better-css-syntax
+	url = git://github.com/vim-scripts/Better-CSS-Syntax-for-Vim.git
