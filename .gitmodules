@@ -61,12 +61,12 @@
 [submodule "bundle/flake8"]
 	path = bundle/flake8
 	url = git://github.com/nvie/vim-flake8.git
-[submodule "bundle/better-css-syntax"]
-	path = bundle/better-css-syntax
-	url = git://github.com/vim-scripts/Better-CSS-Syntax-for-Vim.git
 [submodule "bundle/easygrep"]
 	path = bundle/easygrep
 	url = git://github.com/vim-scripts/EasyGrep.git
 [submodule "bundle/bufexplorer"]
 	path = bundle/bufexplorer
 	url = git://github.com/vim-scripts/bufexplorer.zip.git
+[submodule "bundle/vim-less"]
+	path = bundle/vim-less
+	url = https://github.com/groenewege/vim-less.git

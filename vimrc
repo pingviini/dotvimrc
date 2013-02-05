@@ -397,6 +397,7 @@ endif
 " Exuberant Ctags and Omelette
 map <Leader>t :CtrlP<CR>
 map <Leader>T :CtrlPClearAllCaches<CR>
+map <S-F10> :!ctags -R -f ./tags `python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`<CR>
 
 " Find tags|omelette directory by going up from cwd
 py << EOF
@@ -437,11 +438,6 @@ nnoremap <leader>a :Ack
 "        nnoremap <left> <nop>
 "        nnoremap <right> <nop>
 "        inoremap <up> <nop>
-
-" Backups & Files
-set backup                   " Enable creation of backup file.
-set backupdir=~/.vim/backups " Where backups will go.
-set directory=~/.vim/tmp     " Where temporary files will go.
 
 " Mr.Igor
 nmap <D-i> :!igor %<CR> <bar> :e!<CR>
